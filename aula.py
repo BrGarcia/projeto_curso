@@ -25,13 +25,32 @@ perguntas = { 1:{
                 'gabarito': 'C'}  
 }
 
-#funcao a ser implementada recebe um int e retorna
+"""#funcao a ser implementada recebe um int e retorna
     #str = Pergunta
     #lista = Opções Randomizadas
     #str = Gabarito
 def busca_questao(num_questao): 
-    print('Hello world!') 
-numero_de_questores = int(input('Digite quantas questões você deseja?: '))
+    print('Hello world!') """
+#compara os gabaritos e retorna nota e quais questoes erradas
+def corretor(resp,gab):
+    qtd = len(gab)
+    print(f"Qunatidade de questoes: {qtd}")
+    nota = 0
+    correcao = []
+    #print(f"Valor{gabarito} // Tipo{type(gabarito)} // Tipo{type(respostas)}")
+    if resp==gab:
+        nota = 10
+        correcao = gab
+        return nota
+    else:
+        print(type(resp))
+        print(type(gab)) 
+        print('else nota nao foi 10')
+        return nota
+
+numero_de_questores = 1
+nota_aluno = 0
+if numero_de_questores == 0: numero_de_questores += 1
 sorteio = random.sample(range(1,6),numero_de_questores)
 print(sorteio)
 gabarito_aluno = []
@@ -42,5 +61,7 @@ for i in sorteio:
     resposta_aluno = str.capitalize(input("Digite sua resposta: "))
     gabarito_aluno.append(resposta_aluno)
     gabarito_prova.append(perguntas[i]['gabarito'])
-print(gabarito_aluno)
-print(gabarito_prova)
+#print(f"Gabarito Aluno: {gabarito_aluno}")
+#print(f"Gabarito Prova: {gabarito_prova}")
+nota_aluno = corretor(list(gabarito_aluno),list(gabarito_prova))
+print(f"a nota do aluno foi: {nota_aluno}")
