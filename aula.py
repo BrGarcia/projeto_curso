@@ -32,7 +32,7 @@ sorteio = random.sample(range(1,6),4)
 print(sorteio)
 gabarito_aluno = []
 for i in sorteio:
-    #busca_questao(i)
+    busca_questao(i)
     resposta_aluno = int(input("Digite sua resposta"))
     gabarito_aluno.append(resposta_aluno)
     print(gabarito_aluno)
