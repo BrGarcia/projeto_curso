@@ -50,7 +50,6 @@ def corretor(resp:list,gab:list)->list:
             correcao.append(0)
     return nota , correcao
 
-
 gabarito_aluno = []
 gabarito_prova = []
 numero_de_questores = int(input("Numero de questoes: "))
