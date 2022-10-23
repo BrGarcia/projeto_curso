@@ -32,36 +32,41 @@ perguntas = { 1:{
 def busca_questao(num_questao): 
     print('Hello world!') """
 #compara os gabaritos e retorna nota e quais questoes erradas
-def corretor(resp,gab):
+def gerador_questao(num_questao:int,banco_questoes:dict )->list:
+    """A ser implementada"""
+    """Recebe a quantidade de questoes e retorna uma lista com as n questoes e o gabarito da prova"""
+    
+def corretor(resp:list,gab:list)->list:
+    """Corrigir a prova, recebe o gabarito e as resposta e retornar nota do aluno com uma lista das respostas certas e erradas."""
     qtd = len(gab)
-    print(f"Qunatidade de questoes: {qtd}")
-    nota = 0
+    peso_nota = 10.0/qtd
+    nota = 0.0
     correcao = []
-    #print(f"Valor{gabarito} // Tipo{type(gabarito)} // Tipo{type(respostas)}")
-    if resp==gab:
-        nota = 10
-        correcao = gab
-        return nota
-    else:
-        print(type(resp))
-        print(type(gab)) 
-        print('else nota nao foi 10')
-        return nota
+    for r, g in zip(resp, gab):
+        if r == g:
+            correcao.append(1)
+            nota += peso_nota
+        else:
+            correcao.append(0)
+    return nota , correcao
 
-numero_de_questores = 1
-nota_aluno = 0
-if numero_de_questores == 0: numero_de_questores += 1
-sorteio = random.sample(range(1,6),numero_de_questores)
-print(sorteio)
+
 gabarito_aluno = []
 gabarito_prova = []
+numero_de_questores = int(input("Numero de questoes: "))
+if numero_de_questores == 0:
+    numero_de_questores += 1
+sorteio = random.sample(range(1,6),numero_de_questores)
+
 for i in sorteio:
     print(perguntas[i]['questao'])
-    print(perguntas[i]['resposta'])
+    for n in perguntas[i]['resposta']:
+        print(f"{n} - {perguntas[i]['resposta'][n]}")
     resposta_aluno = str.capitalize(input("Digite sua resposta: "))
     gabarito_aluno.append(resposta_aluno)
     gabarito_prova.append(perguntas[i]['gabarito'])
-#print(f"Gabarito Aluno: {gabarito_aluno}")
-#print(f"Gabarito Prova: {gabarito_prova}")
+    
+#CORREÇÃO DA PROVA E NOTA DO ALUNO
 nota_aluno = corretor(list(gabarito_aluno),list(gabarito_prova))
-print(f"a nota do aluno foi: {nota_aluno}")
+print(f"A nota do aluno foi: {nota_aluno[0]}")
+print(f"Os acertos do aluno: {nota_aluno[1]}")
