@@ -11,24 +11,29 @@ def gerador_lista(qtd:int, tamanho:int)->list:
         listatemp = []
     return lista
 
-listalista = gerador_lista(1,6)
-
-for lista in listalista:
-    print(lista)
-    for num in range(0, len(lista)):
-        vlista = []
-        listav = []
-        c = 0
-        flag = -1
-        for i in range(len(lista)):
-            if flag == -1:
-                a = lista[i]
-                for v in lista:
-                    if a == v and c > lista.index(v):
-                        print(f"Repetido: {a} - Posicao: {c}")
-                        print(lista)
-                        flag = 1
+def busca_repetido(lista:list)->list:
+    """"Recebe uma lista, busca o primeiro elemento repetido
+    e retorna uma lista (a,b) onde a é o elemento repetido e 
+    b é a posicao na lista do elemento repetido."""
+    for i, numero in enumerate(lista):
+        print(i, numero)
+        return True
+    
+listalista = gerador_lista(5,6)
+"""for i, numero in enumerate(listalista):
+    print(i, numero)"""
+     
+flag = bool(False)
+for num, lista in enumerate(listalista):
+    vlista = []
+    listav = []
+    for i, valor in enumerate(lista):
+        if flag:
+            flag = False
+        else:
+            a = valor
+            for v,j in enumerate(lista):
+                if (a == v) and (i > lista.index(v)):
+                        print(f"Lista n{num} {lista}: Item Repetido: {a} - Posicao na lista: {i}")
+                        flag = True
                         break
-                c += 1
-            else:
-                break
