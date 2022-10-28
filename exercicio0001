@@ -1,0 +1,15 @@
+lista = [1, 2, 3, 3,5,6,1]
+vlista = []
+listav = []
+c = 0
+flag_item_localizado = False
+for i in range(len(lista)):
+    if flag_item_localizado == True: break
+    else:
+        a = lista[i]
+        for v in lista:
+            if a == v and c > lista.index(v): 
+                print(f"{a}{c}")
+                flag_item_localizado = True
+                break
+        c += 1
