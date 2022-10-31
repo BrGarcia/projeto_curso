@@ -33,8 +33,8 @@ def busca_repetido(lista: list)->list:
     d_temp = -1
     for index,valor in enumerate(lista):
         for i,v in enumerate(lista):
-            d = len(lista)-i
-            if (i != index) and (valor == v) and (i>index) and d>d_temp:
+            d = len(lista)-i #distancia do indie do elemento para o final da lista (qnto maior, mais proximo ao comeco da lista.)
+            if (i != index) and (valor == v) and (i>index) and (d>d_temp):
                 d_temp = d
                 lista_repetidos.clear()
                 lista_repetidos.append([i,v])
