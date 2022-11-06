@@ -50,6 +50,11 @@ def corretor(resp:list,gab:list)->list:
             correcao.append(0)
     return nota , correcao
 
+numero_de_questoes = 2
+nota_aluno = 0
+if numero_de_questoes == 0: numero_de_questoes += 1
+sorteio = random.sample(range(1,6),numero_de_questoes)
+print(sorteio)
 gabarito_aluno = []
 gabarito_prova = []
 numero_de_questores = int(input("Numero de questoes: "))
